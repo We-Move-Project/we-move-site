@@ -1,0 +1,142 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ImageSlot from "@/components/ImageSlot.astro";
+import { SITE_TAGLINE } from "@/config/site";
+---
+
+<BaseLayout
+  title="Início"
+  description="We Move: gestão de transporte universitário com rastreamento em tempo real, app do motorista e painel administrativo. Feito por estudantes, para estudantes."
+>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="3"/><path d="M4 10h16"/><path d="M7 17v2M17 17v2"/><circle cx="8" cy="13.5" r="1"/><circle cx="16" cy="13.5" r="1"/></svg>
+            Transporte universitário inteligente
+          </span>
+          <h1 class="display">O caminho até o campus, sem complicação.</h1>
+          <p class="hero-tagline">{SITE_TAGLINE}.</p>
+          <p class="lead">O We Move conecta estudantes, motoristas e operadores em uma só plataforma — rotas organizadas, ônibus rastreados em tempo real e comunicação direta com quem viaja.</p>
+          <div class="hero-cta">
+            <a class="btn btn-lg btn-primary" href="/contato#agendar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+              Agendar apresentação
+            </a>
+            <a class="btn btn-lg btn-secondary" href="/contato">Falar com a gente</a>
+          </div>
+          <div class="hero-trust">
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+            <span>Já em operação em rotas intermunicipais do Ceará</span>
+          </div>
+        </div>
+        <div class="hero-visual reveal">
+          <div class="hero-media">
+            <ImageSlot placeholder="Foto: van/ônibus com estudantes no campus" />
+          </div>
+          <div class="hero-badge tl">
+            <span class="dot"></span>
+            <div><b>Chega em 4 min</b><br /><span>Linha UECE · Pacajus</span></div>
+          </div>
+          <div class="hero-badge br">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><b>Rastreamento ao vivo</b><br /><span>Você sabe onde o ônibus está</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm section-sunken">
+    <div class="container">
+      <p class="muted" style="text-align:center;margin-bottom:24px;font-size:14px;font-weight:500">Instituições e operadores que confiam no We Move</p>
+      <div class="logo-strip">
+        <span class="logo-chip">UECE</span><span class="logo-chip">UNILAB</span><span class="logo-chip">IFCE</span>
+        <span class="logo-chip">Transporte Pacajus</span><span class="logo-chip">Rota Redenção</span><span class="logo-chip">DA Estudantil</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg> Por que We Move</span>
+        <h2 class="h2">Tudo o que o transporte universitário precisa, em um só lugar</h2>
+        <p class="lead">Menos planilhas e grupos de WhatsApp. Mais organização, previsibilidade e tranquilidade para todo mundo.</p>
+      </div>
+      <div class="card-grid cols-4">
+        <div class="card reveal">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <h3>Rastreamento em tempo real</h3>
+          <p>Estudantes acompanham o ônibus no mapa e sabem exatamente quando ele chega.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><circle cx="18" cy="5" r="3"/><path d="M9 19h6a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6"/></svg></div>
+          <h3>Rotas organizadas</h3>
+          <p>Itinerários, horários e paradas gerenciados em um painel simples e centralizado.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon success"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M10.3 21a2 2 0 0 0 3.4 0"/></svg></div>
+          <h3>Comunicação direta</h3>
+          <p>Avisos de saída, atraso e comunicados da instituição chegam na hora certa, direto no app.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <h3>Mais segurança</h3>
+          <p>Presença de embarque, motorista identificado e histórico de cada viagem.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-brand">
+    <div class="container">
+      <div class="section-head center reveal" style="max-width:560px">
+        <span class="eyebrow on-dark">Nossos números</span>
+        <h2 class="h2">Impacto que se move com você</h2>
+      </div>
+      <div class="metrics reveal">
+        <div class="metric"><div class="num">12&nbsp;mil+</div><div class="label">Alunos atendidos</div></div>
+        <div class="metric"><div class="num">38</div><div class="label">Rotas ativas</div></div>
+        <div class="metric"><div class="num">9</div><div class="label">Universidades parceiras</div></div>
+        <div class="metric"><div class="num">98%</div><div class="label">Viagens no horário</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-sunken">
+    <div class="container">
+      <div class="step-row" style="padding-top:0;border:none">
+        <div class="step-body reveal">
+          <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.4 3-5.5A4.5 4.5 0 0 0 12 5 4.5 4.5 0 0 0 2 8.5c0 2.1 1.5 4 3 5.5l7 7Z"/></svg> A história por trás</span>
+          <h3>Nasceu de quem pega ônibus todo dia para estudar</h3>
+          <p class="lead" style="font-size:1.05rem">O We Move começou com estudantes que cansaram de não saber a que horas o ônibus passava, de perder aula por atraso e de não ter para onde reclamar. Viramos a solução que gostaríamos de ter.</p>
+          <a class="btn btn-primary" href="/sobre-nos" style="margin-top:24px">
+            Conheça nossa história
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+        <div class="step-media reveal">
+          <ImageSlot placeholder="Foto: estudantes esperando o ônibus no ponto" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band reveal">
+        <h2 class="h2">Pronto para transformar o transporte da sua instituição?</h2>
+        <p>Agende uma apresentação gratuita e veja o We Move funcionando com as rotas da sua universidade.</p>
+        <div class="btns">
+          <a class="btn btn-lg btn-on-dark" href="/contato#agendar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+            Agendar apresentação
+          </a>
+          <a class="btn btn-lg btn-outline-light" href="/contato">Falar com a gente</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

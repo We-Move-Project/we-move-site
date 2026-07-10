@@ -1,0 +1,196 @@
+---
+type Props = {
+  type: "contact" | "presentation_request";
+  id?: string;
+};
+
+const { type, id } = Astro.props;
+const isPresentation = type === "presentation_request";
+const formId = id ?? `lead-form-${type}`;
+---
+
+<div class="form-card">
+  <form id={formId} class="lead-form" data-lead-type={type} novalidate>
+    <div class="field-row">
+      <div class="field">
+        <label for={`${formId}-name`}>Nome <span class="req">*</span></label>
+        <input id={`${formId}-name`} name="name" type="text" required maxlength="255" placeholder="Seu nome" />
+      </div>
+      {isPresentation ? (
+        <div class="field">
+          <label for={`${formId}-role`}>Cargo</label>
+          <input id={`${formId}-role`} name="role" type="text" maxlength="255" placeholder="Ex.: Coordenador de transporte" />
+        </div>
+      ) : (
+        <div class="field">
+          <label for={`${formId}-institution`}>Organização</label>
+          <input id={`${formId}-institution`} name="institution_name" type="text" maxlength="255" placeholder="Universidade / empresa" />
+        </div>
+      )}
+    </div>
+
+    {isPresentation && (
+      <div class="field">
+        <label for={`${formId}-institution`}>Organização <span class="req">*</span></label>
+        <input id={`${formId}-institution`} name="institution_name" type="text" required maxlength="255" placeholder="Universidade, operadora ou associação" />
+      </div>
+    )}
+
+    {isPresentation && (
+      <div class="field">
+        <label for={`${formId}-segment`}>Você é... <span class="req">*</span></label>
+        <select id={`${formId}-segment`} name="segment" required>
+          <option value="">Selecione</option>
+          <option>Universidade / faculdade</option>
+          <option>Empresa de transporte</option>
+          <option>Associação / DA estudantil</option>
+          <option>Outro</option>
+        </select>
+      </div>
+    )}
+
+    <div class="field-row">
+      <div class="field">
+        <label for={`${formId}-email`}>E-mail <span class="req">*</span></label>
+        <input id={`${formId}-email`} name="email" type="email" required maxlength="255" placeholder="voce@email.com" />
+      </div>
+      <div class="field">
+        <label for={`${formId}-phone`}>{isPresentation ? "WhatsApp" : "Telefone / WhatsApp"} {isPresentation && <span class="req">*</span>}</label>
+        <input id={`${formId}-phone`} name="phone" type="tel" required={isPresentation} maxlength="20" placeholder="(85) 90000-0000" />
+      </div>
+    </div>
+
+    {isPresentation ? (
+      <div class="field-row">
+        <div class="field">
+          <label for={`${formId}-date`}>Melhor data <span class="req">*</span></label>
+          <input id={`${formId}-date`} name="preferred_date" type="date" required />
+        </div>
+        <div class="field">
+          <label for={`${formId}-shift`}>Turno</label>
+          <select id={`${formId}-shift`} name="shift">
+            <option value="">Indiferente</option>
+            <option>Manhã</option>
+            <option>Tarde</option>
+            <option>Noite</option>
+          </select>
+        </div>
+      </div>
+    ) : (
+      <div class="field">
+        <label for={`${formId}-message`}>Como podemos ajudar? <span class="req">*</span></label>
+        <textarea id={`${formId}-message`} name="message" required maxlength="2000" placeholder="Conte um pouco sobre sua operação ou sua dúvida..."></textarea>
+      </div>
+    )}
+
+    <div class="sr-only" aria-hidden="true">
+      <label for={`${formId}-website`}>Não preencher este campo</label>
+      <input id={`${formId}-website`} name="_website" type="text" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <p class="lead-form-feedback" style="display:none;margin-bottom:12px;font-size:14px"></p>
+
+    <button type="submit" class={`btn btn-block btn-lg ${isPresentation ? "btn-orange" : "btn-primary"}`}>
+      {isPresentation && (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+      )}
+      {isPresentation ? "Agendar apresentação" : "Enviar mensagem"}
+    </button>
+  </form>
+
+  <div class="form-success">
+    <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+    <h3>{isPresentation ? "Solicitação recebida!" : "Mensagem enviada!"}</h3>
+    <p class="muted">
+      {isPresentation
+        ? "Vamos confirmar sua apresentação pelo WhatsApp em breve. Até já!"
+        : "Obrigado pelo contato. Nossa equipe responde em até 1 dia útil."}
+    </p>
+  </div>
+</div>
+
+<script>
+  import { API_URL } from "@/config/site";
+
+  document.addEventListener("astro:page-load", () => {
+    const forms = document.querySelectorAll<HTMLFormElement>(".lead-form");
+
+    forms.forEach((form) => {
+    const leadType = form.dataset.leadType;
+    const card = form.closest(".form-card");
+    const success = card?.querySelector<HTMLElement>(".form-success");
+    const feedback = form.querySelector<HTMLParagraphElement>(".lead-form-feedback");
+    const submitButton = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!feedback || !submitButton) return;
+
+      const formData = new FormData(form);
+      const extras: string[] = [];
+      const payload: Record<string, string> = { type: leadType ?? "contact" };
+      const knownFields = ["name", "email", "phone", "institution_name", "message", "preferred_date", "_website"];
+
+      formData.forEach((value, key) => {
+        if (typeof value !== "string" || value.trim() === "") return;
+        if (knownFields.includes(key)) {
+          payload[key] = value;
+        } else {
+          extras.push(`${key}: ${value}`);
+        }
+      });
+
+      if (extras.length > 0) {
+        payload.message = [payload.message, ...extras].filter(Boolean).join(" | ");
+      }
+
+      submitButton.disabled = true;
+      feedback.style.display = "none";
+      feedback.classList.remove("error");
+      feedback.style.color = "";
+
+      try {
+        const response = await fetch(`${API_URL}/v1/institutional/leads`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(payload),
+        });
+
+        if (response.status === 429) {
+          feedback.textContent = "Muitas tentativas. Aguarde um minuto e tente novamente.";
+          feedback.style.color = "var(--orange-600)";
+          feedback.style.display = "block";
+          return;
+        }
+
+        if (response.status === 422) {
+          const data = await response.json().catch(() => null);
+          const firstError = data?.errors ? Object.values(data.errors)[0] : null;
+          feedback.textContent = Array.isArray(firstError)
+            ? String(firstError[0])
+            : "Verifique os campos preenchidos e tente novamente.";
+          feedback.style.color = "var(--orange-600)";
+          feedback.style.display = "block";
+          return;
+        }
+
+        if (!response.ok) {
+          feedback.textContent = "Não foi possível enviar agora. Tente novamente em instantes.";
+          feedback.style.color = "var(--orange-600)";
+          feedback.style.display = "block";
+          return;
+        }
+
+        form.style.display = "none";
+        success?.classList.add("show");
+      } catch {
+        feedback.textContent = "Não foi possível enviar agora. Verifique sua conexão e tente novamente.";
+        feedback.style.color = "var(--orange-600)";
+        feedback.style.display = "block";
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+    });
+  });
+</script>

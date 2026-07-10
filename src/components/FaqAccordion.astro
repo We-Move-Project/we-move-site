@@ -1,0 +1,56 @@
+---
+type FaqItem = {
+  question: string;
+  answer: string;
+};
+
+type Props = {
+  items: FaqItem[];
+};
+
+const { items } = Astro.props;
+---
+
+<div class="faq-list">
+  {items.map((item) => (
+    <div class="faq-item">
+      <button type="button" class="faq-q">
+        <span>{item.question}</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">{item.answer}</div>
+      </div>
+    </div>
+  ))}
+</div>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    document.querySelectorAll<HTMLElement>(".faq-item").forEach((item) => {
+      const q = item.querySelector<HTMLButtonElement>(".faq-q");
+      const a = item.querySelector<HTMLElement>(".faq-a");
+      if (!q || !a) return;
+
+      q.addEventListener("click", () => {
+        const isOpen = item.classList.contains("open");
+        const list = item.closest(".faq-list");
+        list?.querySelectorAll<HTMLElement>(".faq-item.open").forEach((other) => {
+          if (other !== item) {
+            other.classList.remove("open");
+            const otherA = other.querySelector<HTMLElement>(".faq-a");
+            if (otherA) otherA.style.maxHeight = "";
+          }
+        });
+
+        if (isOpen) {
+          item.classList.remove("open");
+          a.style.maxHeight = "";
+        } else {
+          item.classList.add("open");
+          a.style.maxHeight = `${a.scrollHeight}px`;
+        }
+      });
+    });
+  });
+</script>

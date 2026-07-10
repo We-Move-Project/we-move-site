@@ -1,0 +1,78 @@
+---
+import { NAV_LINKS, SITE_NAME } from "@/config/site";
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand-link" href="/" aria-label={`${SITE_NAME} — início`}>
+      <img src="/assets/logo-icon.svg" alt={SITE_NAME} />
+      <span class="brand-word">{SITE_NAME}</span>
+    </a>
+    <nav class="nav-desktop" aria-label="Navegação principal">
+      {NAV_LINKS.map((link) => (
+        <a href={link.href} class={currentPath === link.href ? "active" : ""} aria-current={currentPath === link.href ? "page" : undefined}>
+          {link.label}
+        </a>
+      ))}
+    </nav>
+    <div class="header-actions">
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-nav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true">
+  <div class="mobile-nav-scrim" data-close-nav></div>
+  <div class="mobile-nav-panel">
+    <div class="mobile-nav-head">
+      <img src="/assets/logo-full.svg" alt={SITE_NAME} />
+      <button class="mobile-close" data-close-nav aria-label="Fechar menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    {NAV_LINKS.map((link) => (
+      <a class={`m-link ${currentPath === link.href ? "active" : ""}`} href={link.href} data-close-nav>
+        {link.label}
+      </a>
+    ))}
+    <div class="mobile-nav-cta">
+      <a class="btn btn-secondary btn-block" href="/contato" data-close-nav>Entrar em contato</a>
+      <a class="btn btn-primary btn-block" href="/contato#agendar" data-close-nav>Agendar uma apresentação</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentEscHandler: ((e: KeyboardEvent) => void) | null = null;
+
+  document.addEventListener("astro:page-load", () => {
+    const toggle = document.querySelector<HTMLButtonElement>(".menu-toggle");
+    const drawer = document.querySelector<HTMLElement>(".mobile-nav");
+
+    function openNav() {
+      drawer?.classList.add("open");
+      toggle?.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+    }
+    function closeNav() {
+      drawer?.classList.remove("open");
+      toggle?.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    }
+
+    toggle?.addEventListener("click", openNav);
+    drawer?.querySelectorAll("[data-close-nav]").forEach((el) => el.addEventListener("click", closeNav));
+
+    if (currentEscHandler) {
+      window.removeEventListener("keydown", currentEscHandler);
+    }
+    currentEscHandler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeNav();
+    };
+    window.addEventListener("keydown", currentEscHandler);
+  });
+</script>

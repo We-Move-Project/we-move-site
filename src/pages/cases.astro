@@ -1,0 +1,114 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ImageSlot from "@/components/ImageSlot.astro";
+
+const starIcon = '<path d="M12 2l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 18.6 6.1 21.8l1.2-6.6L2.5 9l6.6-.9L12 2z"/>';
+
+const testimonials = [
+  {
+    quote: "A gente parou de perder aluno por causa de transporte. O painel mostra tudo e os comunicados chegam direto no app.",
+    who: "Coordenação Acadêmica",
+    org: "UECE · Campus Itaperi",
+  },
+  {
+    quote: "Saí das planilhas. Hoje sei qual ônibus está atrasado, quem embarcou e consigo provar minha pontualidade pro contratante.",
+    who: "Diretor de Operações",
+    org: "Transporte Pacajus",
+  },
+  {
+    quote: "Organizar a caravana virou questão de minutos. Ninguém mais fica perdido no grupo de WhatsApp.",
+    who: "Presidente do DA",
+    org: "UNILAB · Redenção",
+  },
+];
+---
+
+<BaseLayout
+  title="Cases e depoimentos"
+  description="Universidades, operadores e associações que já transformaram o transporte com o We Move."
+>
+  <section class="page-hero">
+    <div class="container">
+      <div class="reveal" style="max-width:720px">
+        <span class="eyebrow"><svg viewBox="0 0 24 24" fill="currentColor" set:html={starIcon} /> Cases & depoimentos</span>
+        <h1>Quem usa, recomenda</h1>
+        <p class="lead">Universidades, operadores e associações que já transformaram o transporte com o We Move.</p>
+        <p class="muted" style="margin-top:18px;font-size:13px">Conteúdo ilustrativo para apresentação interna — depoimentos reais serão adicionados conforme forem coletados.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm section-brand">
+    <div class="container">
+      <div class="metrics reveal">
+        <div class="metric"><div class="num">9</div><div class="label">Universidades parceiras</div></div>
+        <div class="metric"><div class="num">14</div><div class="label">Operadores usando</div></div>
+        <div class="metric"><div class="num">12&nbsp;mil+</div><div class="label">Estudantes atendidos</div></div>
+        <div class="metric"><div class="num">4,8/5</div><div class="label">Avaliação média no app</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="card-grid cols-3">
+        {testimonials.map((testimonial) => (
+          <div class="quote-card reveal">
+            <div class="stars">
+              {[0, 1, 2, 3, 4].map(() => (
+                <svg viewBox="0 0 24 24" fill="currentColor" set:html={starIcon} />
+              ))}
+            </div>
+            <blockquote>&ldquo;{testimonial.quote}&rdquo;</blockquote>
+            <div class="quote-author">
+              <div class="av"><ImageSlot placeholder={testimonial.who} /></div>
+              <div class="who"><b>{testimonial.who}</b><span>{testimonial.org}</span></div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-sunken">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg> Caso em destaque</span>
+        <h2 class="h2">Rota UECE ⇄ Pacajus: de caos a referência</h2>
+      </div>
+      <div class="step-row" style="padding:0;border:none">
+        <div class="step-media reveal">
+          <ImageSlot placeholder="Foto: ônibus da rota UECE / Pacajus" />
+        </div>
+        <div class="step-body reveal">
+          <p class="lead" style="font-size:1.05rem">Antes, a rota mais movimentada da operação vivia de reclamação: atrasos sem aviso, cobrança manual e nenhuma previsibilidade.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>-63%</b> em reclamações de atraso no primeiro semestre</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>98%</b> das viagens saindo no horário</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>100%</b> das viagens com presença registrada</span></li>
+          </ul>
+          <a class="btn btn-primary" href="/contato#agendar" style="margin-top:24px">
+            Quero um resultado assim
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band reveal">
+        <h2 class="h2">Pronto para transformar o transporte da sua instituição?</h2>
+        <p>Agende uma apresentação gratuita e veja o We Move funcionando com as rotas da sua universidade.</p>
+        <div class="btns">
+          <a class="btn btn-lg btn-on-dark" href="/contato#agendar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+            Agendar apresentação
+          </a>
+          <a class="btn btn-lg btn-outline-light" href="/contato">Falar com a gente</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

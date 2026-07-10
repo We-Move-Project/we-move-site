@@ -1,0 +1,67 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ImageSlot from "@/components/ImageSlot.astro";
+import { SITE_TAGLINE } from "@/config/site";
+---
+
+<BaseLayout
+  title="Sobre nós"
+  description="A história do We Move: feito por estudantes, para estudantes. Missão, visão e valores."
+>
+  <section class="page-hero">
+    <div class="container">
+      <div class="reveal" style="max-width:760px">
+        <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.4 3-5.5A4.5 4.5 0 0 0 12 5 4.5 4.5 0 0 0 2 8.5c0 2.1 1.5 4 3 5.5l7 7Z"/></svg> Sobre nós</span>
+        <h1>{SITE_TAGLINE}.</h1>
+        <p class="lead">O We Move não veio de uma sala de reunião. Veio do ponto de ônibus, da fila da passagem e da aula perdida por dez minutos de atraso.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="step-row" style="padding-top:0;border:none">
+        <div class="step-body reveal">
+          <h3>Nossa história</h3>
+          <p style="margin-top:12px;color:var(--text-secondary)">Somos estudantes de universidades do interior do Ceará que dependiam de transporte intermunicipal para chegar ao campus. Conhecíamos de perto a rotina de não saber a que horas o ônibus passava, de pagar no dinheiro sem comprovante e de resolver tudo em grupos de WhatsApp lotados.</p>
+          <p style="margin-top:14px;color:var(--text-secondary)">Em vez de reclamar, decidimos construir. O We Move começou como um projeto para organizar uma única rota — e virou a plataforma que hoje conecta milhares de estudantes, motoristas e operadores.</p>
+        </div>
+        <div class="step-media reveal">
+          <ImageSlot placeholder="Foto: fundadores / equipe We Move no campus" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-sunken">
+    <div class="container">
+      <div class="card-grid cols-3">
+        <div class="card reveal">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg></div>
+          <h3>Missão</h3>
+          <p>Tornar o transporte universitário confiável, transparente e acessível para todo estudante que depende dele.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.4 3-5.5A4.5 4.5 0 0 0 12 5 4.5 4.5 0 0 0 2 8.5c0 2.1 1.5 4 3 5.5l7 7Z"/></svg></div>
+          <h3>Visão</h3>
+          <p>Ser a plataforma padrão de mobilidade universitária no Nordeste e além, onde o campus fica longe de casa.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon success"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <h3>Valores</h3>
+          <p>Empatia com quem pega ônibus, simplicidade acima de tudo e compromisso com quem confia na gente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band reveal" style="background-image:radial-gradient(80% 140% at 0% 0%, var(--brand-600) 0%, var(--brand-800) 70%)">
+        <span class="eyebrow on-dark" style="justify-content:center;display:flex;margin-bottom:14px">Nosso lema</span>
+        <h2 class="h2" style="font-size:clamp(1.8rem,4vw,2.8rem);max-width:16ch;margin:0 auto 20px">{SITE_TAGLINE}.</h2>
+        <p>Cada funcionalidade nasce de uma necessidade real de quem vive a rotina do transporte universitário. É por isso que o We Move é diferente.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

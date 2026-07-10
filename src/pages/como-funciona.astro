@@ -1,0 +1,106 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ImageSlot from "@/components/ImageSlot.astro";
+
+const steps = [
+  {
+    title: "Gestão de rotas",
+    lead: "Crie, edite e organize rotas, paradas e horários em minutos.",
+    text: "O operador define itinerários, pontos de embarque e frequência. Mudou o calendário acadêmico? Ajuste tudo em um painel, sem retrabalho.",
+    bullets: ["Cadastro de paradas com endereço e horário", "Rotas por turno (manhã, tarde, noite)", "Ajustes em tempo real refletidos no app"],
+    placeholder: "Screenshot/foto: Gestão de rotas",
+  },
+  {
+    title: "Rastreamento em tempo real",
+    lead: "Todo mundo sabe onde o ônibus está — na hora.",
+    text: "O GPS do veículo alimenta o mapa que o estudante vê. Acabou a incerteza no ponto: dá para sair de casa na hora certa.",
+    bullets: ["Mapa ao vivo com posição do veículo", "Previsão de chegada por parada", 'Alerta de "chega em breve"'],
+    placeholder: "Screenshot/foto: Rastreamento em tempo real",
+  },
+  {
+    title: "App do motorista",
+    lead: "Uma ferramenta simples para quem está na estrada.",
+    text: "O motorista inicia a viagem, confirma embarques e reporta ocorrências direto do celular, sem papelada.",
+    bullets: ["Início e fim de viagem com um toque", "Lista de embarque do dia", "Comunicação com a central"],
+    placeholder: "Screenshot/foto: App do motorista",
+  },
+  {
+    title: "Painel administrativo",
+    lead: "Visão completa da operação em um só lugar.",
+    text: "Gestores acompanham ocupação, pontualidade, frequência e ocorrências com relatórios claros para tomar decisões.",
+    bullets: ["Indicadores de pontualidade e ocupação", "Relatórios exportáveis", "Gestão de motoristas e veículos"],
+    placeholder: "Screenshot/foto: Painel administrativo",
+  },
+  {
+    title: "Notificações",
+    lead: "O aluno certo, avisado na hora certa.",
+    text: "Avisos automáticos de saída, atraso, mudança de rota ou cancelamento chegam por push, para ninguém ser pego de surpresa.",
+    bullets: ["Push de saída e chegada", "Avisos de alteração e cancelamento", "Comunicados da instituição"],
+    placeholder: "Screenshot/foto: Notificações",
+  },
+  {
+    title: "Controle de presença",
+    lead: "Saiba quem embarcou em cada viagem.",
+    text: "A confirmação de embarque gera dados de frequência que ajudam a instituição a acompanhar a assiduidade dos estudantes e a reduzir a evasão.",
+    bullets: ["Confirmação de embarque por viagem", "Relatório de frequência por rota", "Histórico de viagens no app"],
+    placeholder: "Screenshot/foto: Controle de presença",
+  },
+];
+---
+
+<BaseLayout
+  title="Como funciona"
+  description="Gestão de rotas, rastreamento em tempo real, app do motorista, painel administrativo, notificações e controle de presença."
+>
+  <section class="page-hero">
+    <div class="container">
+      <div class="reveal" style="max-width:720px">
+        <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg> Como funciona</span>
+        <h1>Uma plataforma completa, do ponto de ônibus ao painel de gestão</h1>
+        <p class="lead">Seis módulos que trabalham juntos para organizar o transporte universitário de ponta a ponta — para o estudante, o motorista e o operador.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      {steps.map((step, index) => (
+        <div class={`step-row ${index % 2 === 1 ? "reverse" : ""}`}>
+          <div class="step-body reveal">
+            <span class="step-num">{index + 1}</span>
+            <h3>{step.title}</h3>
+            <p class="lead" style="font-size:1.05rem">{step.lead}</p>
+            <p style="margin-top:12px;color:var(--text-secondary)">{step.text}</p>
+            <ul>
+              {step.bullets.map((bullet) => (
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="step-media reveal">
+            <ImageSlot placeholder={step.placeholder} />
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band reveal">
+        <h2 class="h2">Pronto para transformar o transporte da sua instituição?</h2>
+        <p>Agende uma apresentação gratuita e veja o We Move funcionando com as rotas da sua universidade.</p>
+        <div class="btns">
+          <a class="btn btn-lg btn-on-dark" href="/contato#agendar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+            Agendar apresentação
+          </a>
+          <a class="btn btn-lg btn-outline-light" href="/contato">Falar com a gente</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

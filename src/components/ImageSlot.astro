@@ -1,0 +1,9 @@
+---
+type Props = {
+  placeholder: string;
+};
+
+const { placeholder } = Astro.props;
+---
+
+<div class="image-slot" role="img" aria-label={placeholder}>{placeholder}</div>

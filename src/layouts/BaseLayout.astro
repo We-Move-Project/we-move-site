@@ -1,0 +1,82 @@
+---
+import { ClientRouter } from "astro:transitions";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import WhatsAppButton from "@/components/WhatsAppButton.astro";
+import { SITE_NAME } from "@/config/site";
+import "@/styles/global.css";
+import "@/styles/site.css";
+
+type Props = {
+  title: string;
+  description: string;
+};
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} · {SITE_NAME}</title>
+    <meta name="description" content={description} />
+    <ClientRouter />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <WhatsAppButton />
+
+    <script>
+      let currentScrollHandler: (() => void) | null = null;
+
+      document.addEventListener("astro:page-load", () => {
+        if (currentScrollHandler) {
+          window.removeEventListener("scroll", currentScrollHandler);
+        }
+
+        const header = document.querySelector(".site-header");
+        function onScroll() {
+          header?.classList.toggle("scrolled", window.scrollY > 8);
+        }
+        currentScrollHandler = onScroll;
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+
+        const reveals = document.querySelectorAll(".reveal");
+        function showAll() {
+          reveals.forEach((el) => el.classList.add("in"));
+        }
+        if ("IntersectionObserver" in window) {
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("in");
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.08, rootMargin: "0px 0px -5% 0px" },
+          );
+          reveals.forEach((el) => io.observe(el));
+          setTimeout(() => {
+            reveals.forEach((el) => {
+              const rect = el.getBoundingClientRect();
+              if (rect.top < window.innerHeight * 1.1) el.classList.add("in");
+            });
+          }, 500);
+        } else {
+          showAll();
+        }
+      });
+    </script>
+  </body>
+</html>
