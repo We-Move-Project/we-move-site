@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ImageSlot from "@/components/ImageSlot.astro";
-import { SITE_TAGLINE } from "@/config/site";
+import { SITE_TAGLINE, withBase } from "@/config/site";
 ---
 
 <BaseLayout
@@ -20,11 +20,11 @@ import { SITE_TAGLINE } from "@/config/site";
           <p class="hero-tagline">{SITE_TAGLINE}.</p>
           <p class="lead">O We Move conecta estudantes, motoristas e operadores em uma só plataforma — rotas organizadas, ônibus rastreados em tempo real e comunicação direta com quem viaja.</p>
           <div class="hero-cta">
-            <a class="btn btn-lg btn-primary" href="/contato#agendar">
+            <a class="btn btn-lg btn-primary" href={withBase("/contato#agendar")}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
               Agendar apresentação
             </a>
-            <a class="btn btn-lg btn-secondary" href="/contato">Falar com a gente</a>
+            <a class="btn btn-lg btn-secondary" href={withBase("/contato")}>Falar com a gente</a>
           </div>
           <div class="hero-trust">
             <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></span>
@@ -112,7 +112,7 @@ import { SITE_TAGLINE } from "@/config/site";
           <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.4 3-5.5A4.5 4.5 0 0 0 12 5 4.5 4.5 0 0 0 2 8.5c0 2.1 1.5 4 3 5.5l7 7Z"/></svg> A história por trás</span>
           <h3>Nasceu de quem pega ônibus todo dia para estudar</h3>
           <p class="lead" style="font-size:1.05rem">O We Move começou com estudantes que cansaram de não saber a que horas o ônibus passava, de perder aula por atraso e de não ter para onde reclamar. Viramos a solução que gostaríamos de ter.</p>
-          <a class="btn btn-primary" href="/sobre-nos" style="margin-top:24px">
+          <a class="btn btn-primary" href={withBase("/sobre-nos")} style="margin-top:24px">
             Conheça nossa história
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
@@ -130,11 +130,11 @@ import { SITE_TAGLINE } from "@/config/site";
         <h2 class="h2">Pronto para transformar o transporte da sua instituição?</h2>
         <p>Agende uma apresentação gratuita e veja o We Move funcionando com as rotas da sua universidade.</p>
         <div class="btns">
-          <a class="btn btn-lg btn-on-dark" href="/contato#agendar">
+          <a class="btn btn-lg btn-on-dark" href={withBase("/contato#agendar")}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
             Agendar apresentação
           </a>
-          <a class="btn btn-lg btn-outline-light" href="/contato">Falar com a gente</a>
+          <a class="btn btn-lg btn-outline-light" href={withBase("/contato")}>Falar com a gente</a>
         </div>
       </div>
     </div>

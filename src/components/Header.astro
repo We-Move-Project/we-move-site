@@ -1,13 +1,13 @@
 ---
-import { NAV_LINKS, SITE_NAME } from "@/config/site";
+import { NAV_LINKS, SITE_NAME, withBase } from "@/config/site";
 
 const currentPath = Astro.url.pathname;
 ---
 
 <header class="site-header">
   <div class="header-inner">
-    <a class="brand-link" href="/" aria-label={`${SITE_NAME} — início`}>
-      <img src="/assets/logo-icon.svg" alt={SITE_NAME} />
+    <a class="brand-link" href={withBase("/")} aria-label={`${SITE_NAME} — início`}>
+      <img src={withBase("/assets/logo-icon.svg")} alt={SITE_NAME} />
       <span class="brand-word">{SITE_NAME}</span>
     </a>
     <nav class="nav-desktop" aria-label="Navegação principal">
@@ -29,7 +29,7 @@ const currentPath = Astro.url.pathname;
   <div class="mobile-nav-scrim" data-close-nav></div>
   <div class="mobile-nav-panel">
     <div class="mobile-nav-head">
-      <img src="/assets/logo-full.svg" alt={SITE_NAME} />
+      <img src={withBase("/assets/logo-full.svg")} alt={SITE_NAME} />
       <button class="mobile-close" data-close-nav aria-label="Fechar menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
@@ -40,8 +40,8 @@ const currentPath = Astro.url.pathname;
       </a>
     ))}
     <div class="mobile-nav-cta">
-      <a class="btn btn-secondary btn-block" href="/contato" data-close-nav>Entrar em contato</a>
-      <a class="btn btn-primary btn-block" href="/contato#agendar" data-close-nav>Agendar uma apresentação</a>
+      <a class="btn btn-secondary btn-block" href={withBase("/contato")} data-close-nav>Entrar em contato</a>
+      <a class="btn btn-primary btn-block" href={withBase("/contato#agendar")} data-close-nav>Agendar uma apresentação</a>
     </div>
   </div>
 </div>

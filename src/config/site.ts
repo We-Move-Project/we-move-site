@@ -19,11 +19,19 @@ export const WHATSAPP_LINK = WHATSAPP_NUMBER
 
 export const CONTACT_EMAIL = "contato@wemove.com.br";
 
+// GitHub Pages project site is served under a subpath (/we-move-site/), so every
+// root-relative link and public/ asset URL must be prefixed with BASE_URL.
+export const BASE_URL = import.meta.env.BASE_URL;
+
+export function withBase(path: string): string {
+  return `${BASE_URL}${path.replace(/^\//, "")}`;
+}
+
 export const NAV_LINKS = [
-  { href: "/", label: "Início" },
-  { href: "/como-funciona", label: "Como funciona" },
-  { href: "/para-quem-e", label: "Para quem é" },
-  { href: "/sobre-nos", label: "Sobre nós" },
-  ...(SHOW_CASES ? [{ href: "/cases", label: "Cases" }] : []),
-  { href: "/contato", label: "Contato" },
+  { href: withBase("/"), label: "Início" },
+  { href: withBase("/como-funciona"), label: "Como funciona" },
+  { href: withBase("/para-quem-e"), label: "Para quem é" },
+  { href: withBase("/sobre-nos"), label: "Sobre nós" },
+  ...(SHOW_CASES ? [{ href: withBase("/cases"), label: "Cases" }] : []),
+  { href: withBase("/contato"), label: "Contato" },
 ];

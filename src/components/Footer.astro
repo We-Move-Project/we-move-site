@@ -1,5 +1,5 @@
 ---
-import { CONTACT_EMAIL, SHOW_CASES, SITE_NAME, SITE_TAGLINE, WHATSAPP_LINK } from "@/config/site";
+import { CONTACT_EMAIL, SHOW_CASES, SITE_NAME, SITE_TAGLINE, WHATSAPP_LINK, withBase } from "@/config/site";
 
 const year = new Date().getFullYear();
 ---
@@ -8,7 +8,7 @@ const year = new Date().getFullYear();
   <div class="container-wide">
     <div class="footer-grid">
       <div class="footer-about">
-        <img src="/assets/logo-full-white.svg" alt={SITE_NAME} />
+        <img src={withBase("/assets/logo-full-white.svg")} alt={SITE_NAME} />
         <p>Transporte universitário inteligente. {SITE_TAGLINE}.</p>
         <div class="footer-social">
           {WHATSAPP_LINK && (
@@ -30,17 +30,17 @@ const year = new Date().getFullYear();
       <div class="footer-col">
         <h4>Produto</h4>
         <ul>
-          <li><a href="/como-funciona">Como funciona</a></li>
-          <li><a href="/para-quem-e">Para quem é</a></li>
-          {SHOW_CASES && <li><a href="/cases">Cases</a></li>}
+          <li><a href={withBase("/como-funciona")}>Como funciona</a></li>
+          <li><a href={withBase("/para-quem-e")}>Para quem é</a></li>
+          {SHOW_CASES && <li><a href={withBase("/cases")}>Cases</a></li>}
         </ul>
       </div>
       <div class="footer-col">
         <h4>Empresa</h4>
         <ul>
-          <li><a href="/sobre-nos">Sobre nós</a></li>
-          <li><a href="/contato#faq">FAQ</a></li>
-          <li><a href="/contato">Contato</a></li>
+          <li><a href={withBase("/sobre-nos")}>Sobre nós</a></li>
+          <li><a href={withBase("/contato#faq")}>FAQ</a></li>
+          <li><a href={withBase("/contato")}>Contato</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -48,7 +48,7 @@ const year = new Date().getFullYear();
         <ul>
           <li><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></li>
           {WHATSAPP_LINK && <li><a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">WhatsApp comercial</a></li>}
-          <li><a href="/contato#agendar">Agendar apresentação</a></li>
+          <li><a href={withBase("/contato#agendar")}>Agendar apresentação</a></li>
         </ul>
       </div>
     </div>
