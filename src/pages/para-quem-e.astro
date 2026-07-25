@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import ImageSlot from "@/components/ImageSlot.astro";
 import { withBase } from "@/config/site";
 
 const audiences = [
@@ -79,10 +78,7 @@ const benefits = [
 
   <section class="section section-sunken">
     <div class="container">
-      <div class="step-row" style="padding:0;border:none">
-        <div class="step-media reveal">
-          <ImageSlot placeholder="Foto: estudantes embarcando no ônibus" />
-        </div>
+      <div class="step-row single" style="padding:0;border:none">
         <div class="step-body reveal">
           <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg> Feito para o dia a dia real</span>
           <h3>Todos ganham quando o transporte funciona</h3>
