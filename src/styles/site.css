@@ -258,7 +258,7 @@ section { position: relative; }
 .step-row { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding: 48px 0; }
 .step-row:not(:last-child) { border-bottom: 1px solid var(--gray-200); }
 .step-row.reverse .step-media { order: -1; }
-.step-media { border-radius: var(--r-2xl); overflow: hidden; aspect-ratio: 4/3; box-shadow: var(--shadow-lg); background: var(--gray-100); }
+.step-media { border-radius: var(--r-2xl); overflow: hidden; aspect-ratio: 16/9; box-shadow: var(--shadow-lg); background: var(--gray-100); }
 .step-num { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: var(--r-pill); background: var(--brand-600); color: #fff; font-weight: 700; margin-bottom: 16px; }
 .step-body h3 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); margin-bottom: 12px; }
 .step-body ul { list-style: none; margin-top: 18px; display: flex; flex-direction: column; gap: 10px; }
