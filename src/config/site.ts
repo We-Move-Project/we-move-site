@@ -2,10 +2,10 @@ export const SITE_NAME = "We Move";
 
 export const SITE_TAGLINE = "Feito por estudantes, para estudantes";
 
-// Visível por padrão para demonstração interna aos colaboradores.
-// Definir PUBLIC_SHOW_CASES=false no .env de produção antes do lançamento real,
-// já que ainda não existe conteúdo real de depoimentos/cases.
-export const SHOW_CASES = import.meta.env.PUBLIC_SHOW_CASES !== "false";
+// Oculto por padrão: ainda não temos nenhum caso de cliente real do We Move.
+// Definir PUBLIC_SHOW_CASES=true no .env para reativar (ex: demonstração interna
+// aos colaboradores) até existir conteúdo real de depoimentos/cases.
+export const SHOW_CASES = import.meta.env.PUBLIC_SHOW_CASES === "true";
 
 export const API_URL = import.meta.env.PUBLIC_API_URL ?? "http://localhost/api";
 
