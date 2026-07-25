@@ -10,13 +10,8 @@ const steps = [
     text: "O operador define itinerários, pontos de embarque e frequência. Mudou o calendário acadêmico? Ajuste tudo em um painel, sem retrabalho.",
     bullets: ["Cadastro de paradas com endereço e horário", "Rotas por turno (manhã, tarde, noite)", "Ajustes em tempo real refletidos no app"],
     placeholder: "Screenshot/foto: Gestão de rotas",
-  },
-  {
-    title: "Rastreamento em tempo real",
-    lead: "Todo mundo sabe onde o ônibus está — na hora.",
-    text: "O GPS do veículo alimenta o mapa que o estudante vê. Acabou a incerteza no ponto: dá para sair de casa na hora certa.",
-    bullets: ["Mapa ao vivo com posição do veículo", "Previsão de chegada por parada", 'Alerta de "chega em breve"'],
-    placeholder: "Screenshot/foto: Rastreamento em tempo real",
+    screenshot: withBase("/images/screenshots/gestao-de-rotas.png"),
+    aspectRatio: "1474/828",
   },
   {
     title: "App do motorista",
@@ -24,6 +19,9 @@ const steps = [
     text: "O motorista inicia a viagem, confirma embarques e reporta ocorrências direto do celular, sem papelada.",
     bullets: ["Início e fim de viagem com um toque", "Lista de embarque do dia", "Comunicação com a central"],
     placeholder: "Screenshot/foto: App do motorista",
+    screenshot: withBase("/images/screenshots/app-motorista.png"),
+    aspectRatio: "387/840",
+    orientation: "portrait",
   },
   {
     title: "Painel administrativo",
@@ -31,6 +29,8 @@ const steps = [
     text: "Gestores acompanham ocupação, pontualidade, frequência e ocorrências com relatórios claros para tomar decisões.",
     bullets: ["Indicadores de pontualidade e ocupação", "Relatórios exportáveis", "Gestão de motoristas e veículos"],
     placeholder: "Screenshot/foto: Painel administrativo",
+    screenshot: withBase("/images/screenshots/painel-administrativo.png"),
+    aspectRatio: "1592/734",
   },
   {
     title: "Notificações",
@@ -38,6 +38,9 @@ const steps = [
     text: "Avisos automáticos de saída, atraso, mudança de rota ou cancelamento chegam por push, para ninguém ser pego de surpresa.",
     bullets: ["Push de saída e chegada", "Avisos de alteração e cancelamento", "Comunicados da instituição"],
     placeholder: "Screenshot/foto: Notificações",
+    screenshot: withBase("/images/screenshots/notificacoes.png"),
+    aspectRatio: "296/641",
+    orientation: "portrait",
   },
   {
     title: "Controle de presença",
@@ -45,20 +48,23 @@ const steps = [
     text: "A confirmação de embarque gera dados de frequência que ajudam a instituição a acompanhar a assiduidade dos estudantes e a reduzir a evasão.",
     bullets: ["Confirmação de embarque por viagem", "Relatório de frequência por rota", "Histórico de viagens no app"],
     placeholder: "Screenshot/foto: Controle de presença",
+    screenshot: withBase("/images/screenshots/controle-de-presenca.png"),
+    aspectRatio: "284/606",
+    orientation: "portrait",
   },
 ];
 ---
 
 <BaseLayout
   title="Como funciona"
-  description="Gestão de rotas, rastreamento em tempo real, app do motorista, painel administrativo, notificações e controle de presença."
+  description="Gestão de rotas, app do motorista, painel administrativo, notificações e controle de presença."
 >
   <section class="page-hero">
     <div class="container">
       <div class="reveal" style="max-width:720px">
         <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg> Como funciona</span>
         <h1>Uma plataforma completa, do ponto de ônibus ao painel de gestão</h1>
-        <p class="lead">Seis módulos que trabalham juntos para organizar o transporte universitário de ponta a ponta — para o estudante, o motorista e o operador.</p>
+        <p class="lead">Cinco módulos que trabalham juntos para organizar o transporte universitário de ponta a ponta — para o estudante, o motorista e o operador.</p>
       </div>
     </div>
   </section>
@@ -66,7 +72,7 @@ const steps = [
   <section class="section">
     <div class="container">
       {steps.map((step, index) => (
-        <div class={`step-row ${index % 2 === 1 ? "reverse" : ""}`}>
+        <div class={`step-row ${step.orientation === "portrait" ? "" : "stacked"}`}>
           <div class="step-body reveal">
             <span class="step-num">{index + 1}</span>
             <h3>{step.title}</h3>
@@ -81,8 +87,8 @@ const steps = [
               ))}
             </ul>
           </div>
-          <div class="step-media reveal">
-            <ImageSlot placeholder={step.placeholder} />
+          <div class={`step-media reveal ${step.orientation === "portrait" ? "portrait" : ""}`} style={`aspect-ratio:${step.aspectRatio ?? "16/9"}`}>
+            <ImageSlot placeholder={step.placeholder} src={step.screenshot} />
           </div>
         </div>
       ))}

@@ -6,7 +6,7 @@ import { SITE_TAGLINE, withBase } from "@/config/site";
 
 <BaseLayout
   title="Início"
-  description="We Move: gestão de transporte universitário com rastreamento em tempo real, app do motorista e painel administrativo. Feito por estudantes, para estudantes."
+  description="We Move: gestão de transporte universitário com rotas organizadas, app do motorista e painel administrativo. Feito por estudantes, para estudantes."
 >
   <section class="hero">
     <div class="container">
@@ -18,7 +18,7 @@ import { SITE_TAGLINE, withBase } from "@/config/site";
           </span>
           <h1 class="display">O caminho até o campus, sem complicação.</h1>
           <p class="hero-tagline">{SITE_TAGLINE}.</p>
-          <p class="lead">O We Move conecta estudantes, motoristas e operadores em uma só plataforma — rotas organizadas, ônibus rastreados em tempo real e comunicação direta com quem viaja.</p>
+          <p class="lead">O We Move conecta estudantes, motoristas e operadores em uma só plataforma — rotas organizadas e comunicação direta com quem viaja.</p>
           <div class="hero-cta">
             <a class="btn btn-lg btn-primary" href={withBase("/contato#agendar")}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
@@ -34,14 +34,6 @@ import { SITE_TAGLINE, withBase } from "@/config/site";
         <div class="hero-visual reveal">
           <div class="hero-media">
             <ImageSlot placeholder="Foto: van/ônibus com estudantes no campus" />
-          </div>
-          <div class="hero-badge tl">
-            <span class="dot"></span>
-            <div><b>Chega em 4 min</b><br /><span>Linha UECE · Pacajus</span></div>
-          </div>
-          <div class="hero-badge br">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-            <div><b>Rastreamento ao vivo</b><br /><span>Você sabe onde o ônibus está</span></div>
           </div>
         </div>
       </div>
@@ -65,12 +57,7 @@ import { SITE_TAGLINE, withBase } from "@/config/site";
         <h2 class="h2">Tudo o que o transporte universitário precisa, em um só lugar</h2>
         <p class="lead">Menos planilhas e grupos de WhatsApp. Mais organização, previsibilidade e tranquilidade para todo mundo.</p>
       </div>
-      <div class="card-grid cols-4">
-        <div class="card reveal">
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <h3>Rastreamento em tempo real</h3>
-          <p>Estudantes acompanham o ônibus no mapa e sabem exatamente quando ele chega.</p>
-        </div>
+      <div class="card-grid cols-3">
         <div class="card reveal">
           <div class="card-icon orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><circle cx="18" cy="5" r="3"/><path d="M9 19h6a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6"/></svg></div>
           <h3>Rotas organizadas</h3>
