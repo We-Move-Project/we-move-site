@@ -10,6 +10,7 @@ const steps = [
     text: "O operador define itinerários, pontos de embarque e frequência. Mudou o calendário acadêmico? Ajuste tudo em um painel, sem retrabalho.",
     bullets: ["Cadastro de paradas com endereço e horário", "Rotas por turno (manhã, tarde, noite)", "Ajustes em tempo real refletidos no app"],
     placeholder: "Screenshot/foto: Gestão de rotas",
+    screenshot: withBase("/images/screenshots/gestao-de-rotas.png"),
   },
   {
     title: "Rastreamento em tempo real",
@@ -82,7 +83,7 @@ const steps = [
             </ul>
           </div>
           <div class="step-media reveal">
-            <ImageSlot placeholder={step.placeholder} />
+            <ImageSlot placeholder={step.placeholder} src={step.screenshot} />
           </div>
         </div>
       ))}

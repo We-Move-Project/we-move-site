@@ -1,9 +1,14 @@
 ---
 type Props = {
   placeholder: string;
+  src?: string;
 };
 
-const { placeholder } = Astro.props;
+const { placeholder, src } = Astro.props;
 ---
 
-<div class="image-slot" role="img" aria-label={placeholder}>{placeholder}</div>
+{src ? (
+  <img class="image-slot-img" src={src} alt={placeholder} loading="lazy" />
+) : (
+  <div class="image-slot" role="img" aria-label={placeholder}>{placeholder}</div>
+)}
