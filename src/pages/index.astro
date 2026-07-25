@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import ImageSlot from "@/components/ImageSlot.astro";
 import { SITE_TAGLINE, withBase } from "@/config/site";
 ---
 
@@ -33,7 +32,7 @@ import { SITE_TAGLINE, withBase } from "@/config/site";
         </div>
         <div class="hero-visual reveal">
           <div class="hero-media">
-            <ImageSlot placeholder="Foto: van/ônibus com estudantes no campus" />
+            <img src={withBase("/assets/logo-icon-white.svg")} alt="" width="84" height="84" />
           </div>
           <div class="hero-badge tl">
             <span class="dot"></span>
@@ -107,7 +106,7 @@ import { SITE_TAGLINE, withBase } from "@/config/site";
 
   <section class="section section-sunken">
     <div class="container">
-      <div class="step-row" style="padding-top:0;border:none">
+      <div class="step-row single" style="padding-top:0;border:none">
         <div class="step-body reveal">
           <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.4 3-5.5A4.5 4.5 0 0 0 12 5 4.5 4.5 0 0 0 2 8.5c0 2.1 1.5 4 3 5.5l7 7Z"/></svg> A história por trás</span>
           <h3>Nasceu de quem pega ônibus todo dia para estudar</h3>
@@ -116,9 +115,6 @@ import { SITE_TAGLINE, withBase } from "@/config/site";
             Conheça nossa história
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-        </div>
-        <div class="step-media reveal">
-          <ImageSlot placeholder="Foto: estudantes esperando o ônibus no ponto" />
         </div>
       </div>
     </div>
