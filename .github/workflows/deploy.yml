@@ -24,7 +24,7 @@ jobs:
         uses: withastro/action@v6
         env:
           PUBLIC_API_URL: ${{ vars.PUBLIC_API_URL }}
-          PUBLIC_SHOW_CASES: ${{ vars.PUBLIC_SHOW_CASES || 'true' }}
+          PUBLIC_SHOW_CASES: ${{ vars.PUBLIC_SHOW_CASES || 'false' }}
           PUBLIC_WHATSAPP_NUMBER: ${{ vars.PUBLIC_WHATSAPP_NUMBER }}
 
   deploy:

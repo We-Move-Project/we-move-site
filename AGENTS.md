@@ -27,10 +27,10 @@ npm run preview    # preview built output
 ## Cases section toggle
 
 The Depoimentos/Cases page (`src/pages/cases.astro`) has no real client content yet. It's controlled by `PUBLIC_SHOW_CASES` (env var, read in `src/config/site.ts`):
-- `true` (default): section/nav link visible — used for internal demos to colleagues.
-- `false`: nav/footer link hidden, but the page remains reachable by direct URL (`/cases`) either way.
+- `false` (default): nav/footer link hidden, but the page remains reachable by direct URL (`/cases`) either way.
+- `true`: section/nav link visible — used for internal demos to colleagues.
 
-**Must be set to `false` in production** before any real launch, until real client testimonials exist.
+**Only set to `true` temporarily** for internal demos; keep `false` otherwise until real client testimonials exist.
 
 ## Environment variables
 
