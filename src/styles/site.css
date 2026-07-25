@@ -148,7 +148,7 @@ section { position: relative; }
 .header-inner { display: flex; align-items: center; gap: 24px; width: 100%; max-width: 1320px; margin-inline: auto; padding-inline: var(--gutter); }
 .brand-link { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
 .brand-link img { height: 34px; width: auto; }
-.brand-word { font-weight: 700; font-size: 19px; letter-spacing: -0.02em; color: var(--gray-900); }
+.brand-word { font-weight: 400; font-size: 19px; letter-spacing: -0.02em; color: var(--gray-900); }
 .nav-desktop { display: flex; align-items: center; gap: 4px; margin-left: 8px; }
 .nav-desktop a {
   font-size: 15px; font-weight: 500; color: var(--gray-700);
@@ -200,6 +200,7 @@ section { position: relative; }
   box-shadow: var(--shadow-lg); padding: 14px 16px; display: flex; align-items: center; gap: 12px;
 }
 .hero-badge .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--success-500); box-shadow: 0 0 0 4px var(--success-50); flex-shrink: 0; }
+.hero-badge div { line-height: 1.25; }
 .hero-badge b { font-size: 14px; font-weight: 600; }
 .hero-badge span { font-size: 12.5px; color: var(--text-tertiary); }
 .hero-badge.tl { top: 22px; left: -18px; }
