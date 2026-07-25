@@ -11,6 +11,7 @@ const steps = [
     bullets: ["Cadastro de paradas com endereço e horário", "Rotas por turno (manhã, tarde, noite)", "Ajustes em tempo real refletidos no app"],
     placeholder: "Screenshot/foto: Gestão de rotas",
     screenshot: withBase("/images/screenshots/gestao-de-rotas.png"),
+    aspectRatio: "1474/828",
   },
   {
     title: "App do motorista",
@@ -18,6 +19,9 @@ const steps = [
     text: "O motorista inicia a viagem, confirma embarques e reporta ocorrências direto do celular, sem papelada.",
     bullets: ["Início e fim de viagem com um toque", "Lista de embarque do dia", "Comunicação com a central"],
     placeholder: "Screenshot/foto: App do motorista",
+    screenshot: withBase("/images/screenshots/app-motorista.png"),
+    aspectRatio: "387/840",
+    orientation: "portrait",
   },
   {
     title: "Painel administrativo",
@@ -25,6 +29,8 @@ const steps = [
     text: "Gestores acompanham ocupação, pontualidade, frequência e ocorrências com relatórios claros para tomar decisões.",
     bullets: ["Indicadores de pontualidade e ocupação", "Relatórios exportáveis", "Gestão de motoristas e veículos"],
     placeholder: "Screenshot/foto: Painel administrativo",
+    screenshot: withBase("/images/screenshots/painel-administrativo.png"),
+    aspectRatio: "1592/734",
   },
   {
     title: "Notificações",
@@ -75,7 +81,7 @@ const steps = [
               ))}
             </ul>
           </div>
-          <div class="step-media reveal">
+          <div class={`step-media reveal ${step.orientation === "portrait" ? "portrait" : ""}`} style={`aspect-ratio:${step.aspectRatio ?? "16/9"}`}>
             <ImageSlot placeholder={step.placeholder} src={step.screenshot} />
           </div>
         </div>
