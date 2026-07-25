@@ -13,13 +13,6 @@ const steps = [
     screenshot: withBase("/images/screenshots/gestao-de-rotas.png"),
   },
   {
-    title: "Rastreamento em tempo real",
-    lead: "Todo mundo sabe onde o ônibus está — na hora.",
-    text: "O GPS do veículo alimenta o mapa que o estudante vê. Acabou a incerteza no ponto: dá para sair de casa na hora certa.",
-    bullets: ["Mapa ao vivo com posição do veículo", "Previsão de chegada por parada", 'Alerta de "chega em breve"'],
-    placeholder: "Screenshot/foto: Rastreamento em tempo real",
-  },
-  {
     title: "App do motorista",
     lead: "Uma ferramenta simples para quem está na estrada.",
     text: "O motorista inicia a viagem, confirma embarques e reporta ocorrências direto do celular, sem papelada.",
@@ -52,14 +45,14 @@ const steps = [
 
 <BaseLayout
   title="Como funciona"
-  description="Gestão de rotas, rastreamento em tempo real, app do motorista, painel administrativo, notificações e controle de presença."
+  description="Gestão de rotas, app do motorista, painel administrativo, notificações e controle de presença."
 >
   <section class="page-hero">
     <div class="container">
       <div class="reveal" style="max-width:720px">
         <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg> Como funciona</span>
         <h1>Uma plataforma completa, do ponto de ônibus ao painel de gestão</h1>
-        <p class="lead">Seis módulos que trabalham juntos para organizar o transporte universitário de ponta a ponta — para o estudante, o motorista e o operador.</p>
+        <p class="lead">Cinco módulos que trabalham juntos para organizar o transporte universitário de ponta a ponta — para o estudante, o motorista e o operador.</p>
       </div>
     </div>
   </section>
@@ -67,7 +60,7 @@ const steps = [
   <section class="section">
     <div class="container">
       {steps.map((step, index) => (
-        <div class={`step-row ${index % 2 === 1 ? "reverse" : ""}`}>
+        <div class="step-row stacked">
           <div class="step-body reveal">
             <span class="step-num">{index + 1}</span>
             <h3>{step.title}</h3>
